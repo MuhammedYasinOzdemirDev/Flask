@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{%block body %}
+<div class="container">
+    <h3>Makaleler</h3>
+    <div class="container">
+        <form method="POST" action="/search"><!--Farklı bir yontem olarak search gondeririz-->
+            <div class="mt-3 inputs input-group">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control" name="keyword"
+                    placeholder="Search Article..."><!--Bilgi name değerine gore alınır-->
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </div>
+        </form>
+
+    </div>
+    <hr>
+    {%if articles %}
+    <div class="btn-group list-group ">
+        {% for article in articles %}
+        <a href="/article/{{article.id}}" class="list-group-item flex-column align-items-start btn-outline-danger btn">
+
+            <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1">{{article.title}}</h6>
+                <small>{{article.author}}</small>
+            </div>
+        </a>
+        {%endfor%}
+    </div>
+    {%else%}
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Uyarı!</h4>
+        <p>Maalesef Makale bulunmuyor...</p>
+        <hr>
+
+    </div>
+    {%endif%}
+</div>
+{%endblock%}

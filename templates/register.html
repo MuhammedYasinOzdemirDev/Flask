@@ -1,0 +1,18 @@
+{%extends "layout.html" %}
+{% block body %}
+<div class="container " style="margin-top:4%">
+    <h3>Kayıt OL</h3>
+    <hr>
+    {% from "includes/formhelpers.html" import render_field %}<!--Macroyu dahil ederiz otamitik form olusturur-->
+    <form method=post>
+        <div class="form-group">
+            {{ render_field(form.name ,class="form-control") }}
+            {{ render_field(form.username,class="form-control") }}
+            {{ render_field(form.email,class="form-control") }}
+            {{ render_field(form.password,class="form-control") }}
+            {{ render_field(form.confirm,class="form-control") }}
+            <button type="submit" class="btn btn-outline-primary form-control">Kayıt Ol</button>
+        </div>
+</div>
+</form>
+{%endblock %}
